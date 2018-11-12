@@ -1,0 +1,41 @@
+version: '1.0'
+stages:
+ - packaging
+ - deploying
+steps:
+  PackageMyNode1App:
+    title: Packaging Node application 1
+    stage: packaging
+    image: node:11
+    working_directory: ./03_multiple_versions/nodejs_example
+    commands:
+      - echo "My Node version is"
+      - node --version
+      #- npm install
+  PackageMyNode2App:
+    title: Packaging Node application 2
+    stage: packaging
+    image: node:9.3.0-slim
+    working_directory: ./03_multiple_versions/nest_example
+    commands:
+      - echo "My Node version is"
+      - node --version
+      #- npm install         
+  PackageMyPythonApp:
+    title: Packaging Python application
+    stage: packaging
+    image: python:3.6.4-alpine3.6
+    working_directory: ./03_multiple_versions/python_example
+    commands:
+      - echo "My Python version is"
+      - python --version
+      #- pip install . 
+    
+  RunAwsCli:
+    title: Communication with AWS
+    stage: deploying
+    image: mesosphere/aws-cli
+    working_directory: ./02_aws_cli
+    commands:
+      - aws --version
+  
