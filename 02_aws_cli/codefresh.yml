@@ -1,38 +1,46 @@
 version: '1.0'
+stages:
+ - packaging
+ - deploying
 steps:
   PackageMyNodeApp:
     title: Packaging Node application
+    stage: packaging
     image: node:11
     working_directory: ./02_aws_cli/nodejs_example
     commands:
       - echo "My Node version is"
       - node --version
-      - npm install
+      #- npm install
   PackageMyPythonApp:
     title: Packaging Python application
+    stage: packaging
     image: python:3.6.4-alpine3.6
     working_directory: ./02_aws_cli/python_example
     commands:
       - echo "My Python version is"
       - python --version
-      - pip install . 
+      #- pip install . 
   PackageMyGoApp:
     title: Packaging Go application
+    stage: packaging
     image: golang:1.7.1
     working_directory: ./02_aws_cli/golang_example
     commands:
-      - go --version
-      - go build -o bin/sample src/sample/trivial-web-server.go       
+      - go version
+      #- go build -o bin/sample src/sample/trivial-web-server.go       
   RunAwsCli:
     title: Communication with AWS
+    stage: deploying
     image: mesosphere/aws-cli
     working_directory: ./02_aws_cli
     commands:
-      - aws autoscaling help
-  RunTerraformCli:
-    title: Creates machines with Terraform
-    image: hashicorp/Terraform
-    working_directory: ./02_aws_cli
-    commands:
-      - terraform version
-      - terraform init
+      - aws --version
+  #RunTerraformCli:
+  #  title: Creating VMs with Terraform
+  #  stage: deploying
+  #  image: hashicorp/terraform
+  #  working_directory: ./02_aws_cli
+  #  commands:
+  #    - terraform version
+  #    - terraform init
