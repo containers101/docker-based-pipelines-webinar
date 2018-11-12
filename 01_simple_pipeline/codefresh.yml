@@ -1,0 +1,18 @@
+version: '1.0'
+steps:
+  PackageMyNodeApp:
+    title: Packaging Node application
+    image: node:11
+    working_directory: ./01_simple_pipeline/nodejs_example
+    commands:
+      - echo "My Node version is"
+      - node --version
+      - npm install
+  PackageMyPythonApp:
+    title: Packaging Python application
+    image: python:3.6.4-alpine3.6
+    working_directory: ./01_simple_pipeline/python_example
+    commands:
+      - echo "My Python version is"
+      - python --version
+      - pip install .   
