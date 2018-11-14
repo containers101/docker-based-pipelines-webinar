@@ -1,0 +1,17 @@
+version: '1.0'
+steps:
+  DownloadMyDeps:
+    title: Downloading deps
+    image: node:9
+    working_directory: ./04_volume/nest_example
+    commands:
+      - npm install
+  RunMyTests:
+    title: Running unit tests
+    image: node:9
+    working_directory: ./04_volume/nest_example
+    commands:
+      - pwd
+      - ls -ldF node_modules
+      - npm test         
+ 
