@@ -1,0 +1,5 @@
+FROM node:9.3.0-slim
+
+RUN npm config set registry http://registry.npmjs.org
+RUN npm install -g mocha && npm install -g jasmine && npm install -g protractor
+
