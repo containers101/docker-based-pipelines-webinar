@@ -5,7 +5,7 @@ steps:
     type: build
     working_directory: ./06_plugin/bintray_plugin
     image_name: my-jfrog-plugin
-    tag: ${{CF_SHORT_REVISION}}
+    tag: '${{CF_BRANCH}}'
     metadata: # Declare the metadata attribute
       set: # Specify the set operation
         - image_kind: codefresh-plugin
