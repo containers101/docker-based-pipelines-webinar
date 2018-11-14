@@ -1,0 +1,11 @@
+version: '1.0'
+steps:
+  PackageMyJFrogPlugin:
+    title: Creating test image
+    stage: packaging
+    type: build
+    working_directory: ./06_plugin/bintray_plugin
+    image_name: my-jfrog-plugin
+    tag: ${{CF_SHORT_REVISION}}
+ 
+ 
