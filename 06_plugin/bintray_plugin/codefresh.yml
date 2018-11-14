@@ -1,11 +1,17 @@
 version: '1.0'
 steps:
   PackageMyJFrogPlugin:
-    title: Creating test image
-    stage: packaging
+    title: Creating Bintray plugin
     type: build
     working_directory: ./06_plugin/bintray_plugin
     image_name: my-jfrog-plugin
     tag: ${{CF_SHORT_REVISION}}
+    metadata: # Declare the metadata attribute
+      set: # Specify the set operation
+        - image_kind: codefresh-plugin
+        - wraps: jfrog-cli
+        - original_url: https://jfrog.com/getcli/
+   
+          
  
  
