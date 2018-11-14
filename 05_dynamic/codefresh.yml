@@ -1,0 +1,31 @@
+version: '1.0'
+stages:
+ - packaging
+ - testing
+steps:
+  PackageMyNodeApp:
+    title: Packaging Node application
+    stage: packaging
+    image: node:9.3.0-slim
+    working_directory: ./05_dynamic/nest_example
+    commands:
+      - npm install
+  CreateTestImage:
+    title: Creating test image
+    stage: packaging
+    type: build
+    working_directory: ./05_dynamic/nest_example
+    dockerfile: Dockerfile.testing
+    image_name: my-testing-container
+    tag: ${{CF_SHORT_REVISION}}
+  RunMyTests:
+    title: Running unit tests
+    stage: testing
+    image: ${{CreateTestImage}}
+    working_directory: ./05_dynamic/nest_example
+    commands:
+      - node --version
+      - mocha --version
+      - protractor --version  
+      - npm test
+ 
