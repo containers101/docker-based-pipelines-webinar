@@ -11,7 +11,4 @@ steps:
         - image_kind: codefresh-plugin
         - wraps: jfrog-cli
         - original_url: https://jfrog.com/getcli/
-   
-          
- 
- 
+        - input: BINTRAY_PACKAGE, BINTRAY_USER and BINTRAY_KEY
