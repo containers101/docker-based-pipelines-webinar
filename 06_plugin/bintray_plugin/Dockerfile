@@ -2,10 +2,6 @@ FROM debian:stable-slim
 
 WORKDIR /app
 
-ENV BINTRAY_KEY
-ENV BINTRAY_USER
-ENV BINTRAY_PACKAGE
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y curl
