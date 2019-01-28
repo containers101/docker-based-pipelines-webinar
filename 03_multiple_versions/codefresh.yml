@@ -6,7 +6,7 @@ steps:
   PackageMyNode1App:
     title: Packaging Node application 1
     stage: packaging
-    image: node:11
+    image: node:11.1
     working_directory: ./03_multiple_versions/nodejs_example
     commands:
       - echo "My Node version is"

@@ -6,7 +6,7 @@ steps:
   PackageMyNodeApp:
     title: Packaging Node application
     stage: packaging
-    image: node:11
+    image: node:11.1
     working_directory: ./02_aws_cli/nodejs_example
     commands:
       - echo "My Node version is"
