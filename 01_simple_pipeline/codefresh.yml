@@ -2,7 +2,7 @@ version: '1.0'
 steps:
   PackageMyNodeApp:
     title: Packaging Node application
-    image: node:11
+    image: node:11.1
     working_directory: ./01_simple_pipeline/nodejs_example
     commands:
       - echo "My Node version is"
